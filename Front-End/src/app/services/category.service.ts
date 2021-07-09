@@ -16,7 +16,7 @@ export class CategoryService {
     Name :['']
   });
 
-  addCategory()
+  addCategory() : any
   {
     var body = {
       Name: this.categoryModel.value.Name
@@ -25,5 +25,10 @@ export class CategoryService {
     this.categoryModel.reset();
 
     return this.http.post(this.BaseURI+'/Category/AddCategory', body);
+  }
+
+  getAllCategories() : any
+  {
+    return this.http.get(this.BaseURI+'/Category/GetAllCategories');
   }
 }

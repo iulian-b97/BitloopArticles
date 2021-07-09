@@ -3,11 +3,16 @@
     background: rgb(88,97,89);
     background: linear-gradient(45deg, rgba(88,97,89,1) 20%, rgba(69, 73, 70, 0.777) 49%, rgb(121, 125, 134) 95%);
     width: 20%;
-    height: auto;
+    max-height: 700px;
     margin-left: 15px;
     margin-top: 50px;
     border: 2px solid white;
     border-radius: 10px;
+}
+
+.all-category {
+    max-height: 420px;
+    overflow: auto;
 }
 
 .category-header {
@@ -23,7 +28,7 @@
 
 .category-box span {
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -146,7 +151,7 @@
     position: absolute;
     display: flex;
     margin-left: 430px;
-    margin-top: -570px;
+    margin-top: -600px;
     border: 2px solid transparent;
     border-radius: 10px;
 }

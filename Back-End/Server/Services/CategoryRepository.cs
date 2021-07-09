@@ -48,5 +48,14 @@ namespace Server.Services
 
             _serverContext.SaveChanges();
         }
+
+        public ICollection<Category> getAllCategories()
+        {
+            ICollection<Category> allCategories = new List<Category>();
+
+            allCategories = _serverContext.Categories.OrderByDescending(x => x.Date).ToList();
+
+            return allCategories;
+        }
     }
 }

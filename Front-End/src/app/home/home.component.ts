@@ -9,11 +9,18 @@ import { CategoryService } from '../services/category.service';
 export class HomeComponent implements OnInit {
 
   category:any;
+  allCategories:any;
   show:boolean = false;
 
   constructor(public categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categoryService.getAllCategories().subscribe(
+      (res:any) => {
+        this.allCategories = res;
+        console.log(this.allCategories);
+      }
+    );
   }
   
   showOn() {
@@ -27,9 +34,16 @@ export class HomeComponent implements OnInit {
   addNewCategory() {
     this.categoryService.addCategory().subscribe(
       (res:any) => {
-        this.category = res;
+        this.allCategories = res;
         this.show = false;
-        console.log(this.category)
+        console.log(this.allCategories)
+      }
+    );
+
+    this.categoryService.getAllCategories().subscribe(
+      (res:any) => {
+        this.allCategories = res;
+        console.log(this.allCategories);
       }
     );
   }

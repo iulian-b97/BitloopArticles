@@ -30,7 +30,10 @@ namespace Server.Controllers
         {
              _categoryRepository.Add(model);
 
-            return Ok(model);
+            ICollection<Category> allCategories = new List<Category>();
+            allCategories = _categoryRepository.getAllCategories();
+
+            return Ok(allCategories);
         }
 
         [HttpPut]
@@ -49,6 +52,16 @@ namespace Server.Controllers
             _categoryRepository.Delete(categoryId);
 
             return Ok("Success!");
+        }
+
+        [HttpGet]
+        [Route("GetAllCategories")]
+        public async Task<ActionResult> GetAllCategories()
+        {
+            ICollection<Category> allCategories = new List<Category>();
+            allCategories = _categoryRepository.getAllCategories();
+
+            return Ok(allCategories);
         }
     }
 }

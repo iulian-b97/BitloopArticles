@@ -11,5 +11,6 @@ namespace Server.Services
         void Add(Category model);
         void Edit(string categoryId, Category model);
         void Delete(string categoryId);
+        ICollection<Category> getAllCategories();
     }
 }
