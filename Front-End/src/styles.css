@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.144),rgba(255, 255, 255, 0.144)),
+    url('src/assets/images/background.jpg');
+    
+    background-size: cover;
+
+}

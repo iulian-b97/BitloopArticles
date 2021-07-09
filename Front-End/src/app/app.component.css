@@ -1,0 +1,18 @@
+.logo {
+    padding-left: 50px;
+    padding-top: 5px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5vh;
+}
+
+@media (max-width:700px)
+{
+    .logo {
+        margin-left: 80px; 
+    }
+}

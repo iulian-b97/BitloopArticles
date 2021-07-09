@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Library.Data;
+using Library.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Server.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +14,41 @@ namespace Server.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        private readonly ServerContext _serverContext;
+        private readonly ICategoryRepository _categoryRepository;
 
+        public CategoryController(ServerContext serverContext, ICategoryRepository categoryRepository)
+        {
+            _serverContext = serverContext;
+            _categoryRepository = categoryRepository;
+        }
+
+
+        [HttpPost]
+        [Route("AddCategory")]
+        public async Task<ActionResult> AddCategory(Category model)
+        {
+             _categoryRepository.Add(model);
+
+            return Ok(model);
+        }
+
+        [HttpPut]
+        [Route("EditCategory")]
+        public async Task<ActionResult> EditCategory(string categoryId, Category model)
+        {
+            _categoryRepository.Edit(categoryId, model);
+
+            return Ok(model);
+        }
+
+        [HttpDelete]
+        [Route("DeleteCategory")]
+        public async Task<ActionResult> DeleteCategory(string categoryId)
+        {
+            _categoryRepository.Delete(categoryId);
+
+            return Ok("Success!");
+        }
     }
 }

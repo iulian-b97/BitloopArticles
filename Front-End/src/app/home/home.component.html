@@ -1,0 +1,161 @@
+<div class="category-container">
+    <div class="category-header">
+        <h1>Categories</h1>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> Arhitecture</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> IT&C</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> Arhitecture</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> IT&C</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> IT&C</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="category-box">
+        <span><b>Name:</b> IT&C</span> <br>
+        <span><b>Date:</b> 7/9/2021</span> <br>
+        <div class="category-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </div>
+    <div class="add-category" *ngIf="!show">
+        <button type="submit" class="add-btn" (click)="showOn()">Add Category</button>
+    </div>
+    <div class="add-category" *ngIf="show">
+        <form [formGroup]="categoryService.categoryModel" autocomplete="off" (submit)="addNewCategory()">
+            <h2 style="color: #fff; text-align: center;">Name:</h2>
+            <input class="custom-input" formControlName="Name" type="text"> <br> <br>
+            <button type="submit" class="add-btn">Save Category</button>
+        </form>
+        <button type="submit" class="cancel-btn" *ngIf="show" (click)="showOff()">Cancel</button>
+    </div>
+</div>
+
+<div class="article-container">
+    <!-- Search Bar -->
+    <div class="boxContainer">
+        <table class="elementsContainer">
+            <tr>
+                <td>
+                    <input type="text" placeholder="Search" class="search">
+                </td>
+                <td>
+                    <a href="#"><button class="search-btn">Search</button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Articles List -->
+    <div class="wrap">
+        <div class="card">
+            <img src="/assets/images/background.jpg" width="100%" height="150px"/>
+            <div class="container">
+                <h4>Web Design</h4>
+                <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
+                <span>IT&C</span> <br><br>
+                <span>09/07/2021</span> <br><br>
+            </div>
+            <div class="article-buttons">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/assets/images/background.jpg" width="100%" height="150px"/>
+            <div class="container">
+                <h4>Web Design</h4>
+                <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
+                <span>IT&C</span> <br><br>
+                <span>09/07/2021</span> <br><br>
+                <div class="article-buttons">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/assets/images/background.jpg" width="100%" height="150px"/>
+            <div class="container">
+                <h4>Web Design</h4>
+                <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
+                <span>IT&C</span> <br><br>
+                <span>09/07/2021</span> <br><br>
+                <div class="article-buttons">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/assets/images/background.jpg" width="100%" height="150px"/>
+            <div class="container">
+                <h4>Web Design</h4>
+                <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
+                <span>IT&C</span> <br><br>
+                <span>09/07/2021</span> <br><br>
+                <div class="article-buttons">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/assets/images/background.jpg" width="100%" height="150px"/>
+            <div class="container">
+                <h4>Web Design</h4>
+                <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
+                <span>IT&C</span> <br><br>
+                <span>09/07/2021</span> <br><br>
+                <div class="article-buttons">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#" class="active">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+</div>

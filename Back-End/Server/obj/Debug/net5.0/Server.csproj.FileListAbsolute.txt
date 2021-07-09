@@ -61,3 +61,6 @@ C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.
 C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\obj\Debug\net5.0\Server.csprojAssemblyReference.cache
 C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Iulian\Projects ASP.NET\BitloopArticles\Back-End\Server\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
