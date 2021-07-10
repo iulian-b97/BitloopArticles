@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,25 @@ export class CategoryService {
   getAllCategories() : any
   {
     return this.http.get(this.BaseURI+'/Category/GetAllCategories');
+  }
+
+  deleteCategory(categoryId:any) {
+
+    const params = new HttpParams()
+      .set('categoryId', categoryId)
+
+    return this.http.delete(this.BaseURI+'/Category/DeleteCategory', {params});
+  }
+
+  editCategory(categoryId:any) {
+    var body = {
+      Name: this.categoryModel.value.Name
+    }
+    this.categoryModel.reset();
+
+    const params = new HttpParams()
+      .set('categoryId', categoryId)
+
+    return this.http.put(this.BaseURI+'/Category/EditCategory',body, {params});
   }
 }

@@ -32,6 +32,13 @@
     font-weight: 400;
 }
 
+.edit-box {
+    background-color: transparent;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
 .category-header h1 {
     color: white;
     text-align: center;
@@ -102,17 +109,16 @@
 }
 
 .add-category {
+    width: 80%;
+    margin: auto;
+    text-align: center;
     margin: 15px;
 }
 
-.add-category button{
-    margin-left: 11vh;
-}
 
 .custom-input {
     border: 2px solid white;
     text-align: center;
-    margin-left: 55px;
     font-size: 15px;
     width: 60%;
 }
@@ -132,16 +138,8 @@
         font-size: 15px;
         width: 60%;
     }
-
-  
 }
 
-@media (max-width:1200px)
-{
-    .add-category button{
-        margin-left: 5vh;
-    }
-}
 
 /*ARTICLE*/
 .article-container {

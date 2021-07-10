@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   category:any;
   allCategories:any;
   show:boolean = false;
+  editBool:boolean = false;
 
   constructor(public categoryService: CategoryService) { }
 
@@ -47,4 +48,30 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  deleteCategory(categoryId:any) {
+    this.allCategories.splice(categoryId-1, 1)
+    this.categoryService.deleteCategory(categoryId).subscribe((res) => {
+      console.log(res);
+    });
+  }
+
+  editOn() {
+    this.editBool = true;
+  }
+
+  editOff() {
+    this.editBool = false;
+  }
+
+  editCategory(categoryId:any) {
+    this.categoryService.editCategory(categoryId).subscribe((res) => {
+      console.log(res);
+      this.ngOnInit();
+    });
+
+    this.editBool = false;
+  }
 }
+
+
