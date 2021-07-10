@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   allCategories:any;
   show:boolean = false;
   editBool:boolean = false;
+  sectionBool:boolean = false;
 
   constructor(public categoryService: CategoryService) { }
 
@@ -71,6 +72,14 @@ export class HomeComponent implements OnInit {
     });
 
     this.editBool = false;
+  }
+
+  sectionOn() {
+    this.sectionBool = true;
+  }
+
+  sectionOff() {
+    this.sectionBool = false;
   }
 }
 

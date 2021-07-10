@@ -8,6 +8,7 @@
     margin-top: 50px;
     border: 2px solid white;
     border-radius: 10px;
+    position: absolute;
 }
 
 .all-category {
@@ -92,6 +93,23 @@
     transition: 0.5s;
 }
 
+.add-article-btn {
+    background-color: green;
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+    position: absolute;
+    margin-left: 19%;
+    margin-top: 7px;
+}
+
+.add-article-btn:hover {
+    background-color: rgb(155, 135, 24);
+    transition: 0.5s;
+}
+
 .cancel-btn {
     background-color: rgb(155, 135, 24);
     color: white;
@@ -109,7 +127,7 @@
 }
 
 .add-category {
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: center;
     margin: 15px;
@@ -149,7 +167,7 @@
     position: absolute;
     display: flex;
     margin-left: 430px;
-    margin-top: -600px;
+    margin-top: 0px;
     border: 2px solid transparent;
     border-radius: 10px;
 }
@@ -241,6 +259,11 @@
 
     .boxContainer {
         width: 230px;
+    }
+
+    .add-article-btn {
+        margin-top: 60px;   
+        margin-left: 50px;
     }
 }
 

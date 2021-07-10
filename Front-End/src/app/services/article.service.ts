@@ -1,9 +1,34 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { }
+
+  readonly BaseURI = "http://localhost:56514/api";
+
+  articleModel = this.fb.group({
+    Title :[''],
+    Introduction :[''],
+    Description :[''],
+    CategoryName :['']
+  });
+
+  addArticle() {
+    var body = {
+      Title: this.articleModel.value.Title,
+      Introduction: this.articleModel.value.Introduction,
+      Description: this.articleModel.value.Description,
+      CategoryName: this.articleModel.value.CategoryName
+    }
+
+    this.articleModel.reset();
+
+    return this.http.post(this.BaseURI+'/Article/AddArticle', body);
+  }
 }

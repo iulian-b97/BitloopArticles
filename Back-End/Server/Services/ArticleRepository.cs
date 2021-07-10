@@ -23,6 +23,7 @@ namespace Server.Services
             {
                 Title = model.Title,
                 Introduction = model.Introduction,
+                Description = model.Description,
                 CategoryName = model.CategoryName
             };
 
