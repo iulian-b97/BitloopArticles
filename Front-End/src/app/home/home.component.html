@@ -1,4 +1,4 @@
-<section *ngIf="!sectionBool">
+<section *ngIf="!sectionBool && !sectionBool2 && !sectionBool3">
     <div class="category-container">
         <div class="category-header">
             <h1>Categories</h1>
@@ -55,70 +55,19 @@
 
         <!-- Articles List -->
         <div class="wrap">
-            <div class="card">
+            <div class="card" *ngFor="let article of allArticles">
+                <a style="text-decoration: none; color: black;" (click)="section3On()">
                 <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
                 <div class="container">
-                    <h4>Web Design</h4>
-                    <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
-                    <span>IT&C</span> <br><br>
-                    <span>09/07/2021</span> <br><br>
+                    <h4>{{article.title}}</h4>
+                    <span>{{article.introduction}}</span> <br><br>
+                    <span>{{article.categoryName}}</span> <br><br>
+                    <span>{{article.date | date: 'HH:mm:ss'}} <br>  {{article.date | date: 'dd/MM/yyyy'}}</span> <br><br>
                 </div>
+                </a>
                 <div class="article-buttons">
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
-                <div class="container">
-                    <h4>Web Design</h4>
-                    <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
-                    <span>IT&C</span> <br><br>
-                    <span>09/07/2021</span> <br><br>
-                    <div class="article-buttons">
-                        <button class="edit-btn">Edit</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
-                <div class="container">
-                    <h4>Web Design</h4>
-                    <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
-                    <span>IT&C</span> <br><br>
-                    <span>09/07/2021</span> <br><br>
-                    <div class="article-buttons">
-                        <button class="edit-btn">Edit</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
-                <div class="container">
-                    <h4>Web Design</h4>
-                    <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
-                    <span>IT&C</span> <br><br>
-                    <span>09/07/2021</span> <br><br>
-                    <div class="article-buttons">
-                        <button class="edit-btn">Edit</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
-                <div class="container">
-                    <h4>Web Design</h4>
-                    <span>Este un domeniu interesant si captivant din industria IT</span> <br><br>
-                    <span>IT&C</span> <br><br>
-                    <span>09/07/2021</span> <br><br>
-                    <div class="article-buttons">
-                        <button class="edit-btn">Edit</button>
-                        <button class="delete-btn">Delete</button>
-                    </div>
+                    <button (click)="section2On()" routerLink='/edit' routerLinkActive='active' class="edit-btn">Edit</button>
+                    <button (click)="deleteArticle(article.id)" class="delete-btn">Delete</button>
                 </div>
             </div>
         </div>
@@ -133,6 +82,55 @@
             <a href="#">5</a>
             <a href="#">6</a>
             <a href="#">&raquo;</a>
+        </div>
+    </div>
+</section>
+
+<!-- Edit Article -->
+<section *ngIf="sectionBool2">
+    <div class="article-box" >
+        <div class="article-header">
+            <h1>Edit Article</h1>
+        </div>
+        <div *ngFor="let article of allArticles">
+        <form [formGroup]="articleService.articleModel" autocomplete="off" (submit)="editArticle(article.id)">
+            <div class="row">
+                <div class="card-1">
+                    <h2 style="color: #fff; text-align: center;">Title:</h2>
+                    <input class="custom-input" formControlName="Title" type="text" placeholder="{{article.title}}" contenteditable="true"> <br> <br>
+                    <h2 style="color: #fff; text-align: center;">Introduction:</h2>
+                    <textarea style="width: 60%; min-height: 100px;" formControlName="Introduction" type="text" placeholder="{{article.introduction}}" contenteditable="true"></textarea> <br> <br>
+                    <h2 style="color: #fff; text-align: center;">Category:</h2>
+                    <input class="custom-input" formControlName="CategoryName" type="text" placeholder="{{article.categoryName}}" contenteditable="true"> <br> <br>
+                    <button style="margin:10px" type="submit" class="add-btn">Modify Article</button>
+                    <button type="submit" (click)="section2Off()" class="cancel-btn">Cancel</button>
+                </div>
+                <textarea formControlName="Description" placeholder="{{article.description}}" contenteditable="true" class="card-2"></textarea>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+
+<!-- View Article -->
+<section *ngIf="sectionBool3">
+    <div class="article-box" >
+        <div class="article-header">
+            <h1>View Article</h1>
+        </div>
+        <div *ngFor="let article of allArticles">
+            <div class="row">
+                <div class="card-1">
+                    <h2 style="color: #fff; text-align: center;">Title:</h2>
+                    <input class="custom-input" type="text" value="{{article.title}}" readonly> <br> <br>
+                    <h2 style="color: #fff; text-align: center;">Introduction:</h2>
+                    <textarea style="width: 60%; min-height: 100px;" type="text" value="{{article.introduction}}" readonly></textarea> <br> <br>
+                    <h2 style="color: #fff; text-align: center;">Category:</h2>
+                    <input class="custom-input" type="text" value="{{article.categoryName}}" readonly> <br> <br>
+                    <button type="submit" (click)="section3Off()" class="cancel-btn">Cancel</button>
+                </div>
+                <textarea value="{{article.description}}" readonly class="card-2"></textarea>
+            </div>
         </div>
     </div>
 </section>

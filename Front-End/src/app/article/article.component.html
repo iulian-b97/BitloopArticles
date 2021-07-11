@@ -11,7 +11,8 @@
                 <textarea style="width: 60%; min-height: 100px;" formControlName="Introduction" type="text"></textarea> <br> <br>
                 <h2 style="color: #fff; text-align: center;">Category:</h2>
                 <input class="custom-input" formControlName="CategoryName" type="text"> <br> <br>
-                <button type="submit" class="add-btn">Add Article</button>
+                <button style="margin: 10px;" type="submit" class="add-btn">Add Article</button>
+                <button (click)="redirectHome()" type="submit" class="cancel-btn">Cancel</button>
             </div>
             <textarea formControlName="Description" class="card-2"></textarea>
         </div>

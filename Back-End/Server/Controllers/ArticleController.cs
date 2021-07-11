@@ -30,7 +30,10 @@ namespace Server.Controllers
         {
             _articleRepository.Add(model);
 
-            return Ok(model);
+            ICollection<Article> allArticles = new List<Article>();
+            allArticles = _articleRepository.getAllArticles();
+
+            return Ok(allArticles);
         }
 
         [HttpPut]
@@ -49,6 +52,16 @@ namespace Server.Controllers
             _articleRepository.Delete(articleId);
 
             return Ok("Success!");
+        }
+
+        [HttpGet]
+        [Route("GetAllArticles")]
+        public async Task<ActionResult> GetAllArticles()
+        {
+            ICollection<Article> allArticles = new List<Article>();
+            allArticles = _articleRepository.getAllArticles();
+
+            return Ok(allArticles);
         }
     }
 }

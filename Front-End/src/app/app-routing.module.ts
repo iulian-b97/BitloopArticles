@@ -4,8 +4,8 @@ import { ArticleComponent } from './article/article.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path:'home', component: HomeComponent},
-  { path:'article', component: ArticleComponent}
+  { path:'home', component: HomeComponent },
+  { path:'article', component: ArticleComponent }
 ];
 
 @NgModule({

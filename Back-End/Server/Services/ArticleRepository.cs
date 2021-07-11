@@ -53,5 +53,13 @@ namespace Server.Services
 
             _serverContext.SaveChanges();
         }
+
+        public ICollection<Article> getAllArticles()
+        {
+            ICollection<Article> allArticles = new List<Article>();
+            allArticles = _serverContext.Articles.OrderByDescending(x => x.Date).ToList();
+
+            return allArticles;
+        }
     }
 }

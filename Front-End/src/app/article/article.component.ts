@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticleService } from '../services/article.service';
 
 @Component({
@@ -8,14 +9,23 @@ import { ArticleService } from '../services/article.service';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor(public articleService: ArticleService) { }
+  allArticles:any;
+
+  constructor(public articleService: ArticleService, public router: Router) { }
 
   ngOnInit(): void {
+     
   }
 
   addNewArticle() {
-    this.articleService.addArticle().subscribe((res) =>{
-      console.log(res);
+    this.articleService.addArticle().subscribe((res:any) =>{
+      this.allArticles = res;
+      console.log(this.allArticles);
+      window.location.reload();
     });
+  }
+
+  redirectHome() {
+    this.router.navigateByUrl('/home');
   }
 }

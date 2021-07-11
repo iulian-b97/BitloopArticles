@@ -55,6 +55,22 @@
     transition: 0.5s;
 }
 
+.cancel-btn {
+    background-color: rgb(155, 135, 24);
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 110px;
+}
+
+.cancel-btn:hover {
+    background-color: red;
+    transition: 0.5s;
+}
+
 .custom-input {
     border: 2px solid white;
     text-align: center;

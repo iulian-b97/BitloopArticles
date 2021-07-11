@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../services/article.service';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -10,11 +11,14 @@ export class HomeComponent implements OnInit {
 
   category:any;
   allCategories:any;
+  allArticles:any;
   show:boolean = false;
   editBool:boolean = false;
   sectionBool:boolean = false;
+  sectionBool2:boolean = false;
+  sectionBool3:boolean = false;
 
-  constructor(public categoryService: CategoryService) { }
+  constructor(public categoryService: CategoryService, public articleService: ArticleService) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
@@ -23,6 +27,10 @@ export class HomeComponent implements OnInit {
         console.log(this.allCategories);
       }
     );
+    this.articleService.getAllArticles().subscribe((res:any) => {
+      this.allArticles = res;
+      console.log(this.allArticles);
+    });
   }
   
   showOn() {
@@ -51,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   deleteCategory(categoryId:any) {
-    this.allCategories.splice(categoryId-1, 1)
+    window.location.reload();
     this.categoryService.deleteCategory(categoryId).subscribe((res) => {
       console.log(res);
     });
@@ -80,6 +88,36 @@ export class HomeComponent implements OnInit {
 
   sectionOff() {
     this.sectionBool = false;
+  }
+
+  deleteArticle(articleId:any) {
+    this.articleService.deleteArticle(articleId).subscribe((res:any) => {
+      console.log(res);
+    });
+    window.location.reload();
+  }
+
+  editArticle(articleId:any) {
+    this.articleService.editArticle(articleId).subscribe((res:any) =>{
+      console.log(res);
+      window.location.reload();
+    });
+  }
+
+  section2On() {
+    this.sectionBool2 = true;
+  }
+
+  section2Off() {
+    this.sectionBool2 = false;
+  }
+
+  section3On() {
+    this.sectionBool3 = true;
+  }
+
+  section3Off() {
+    this.sectionBool3 = false;
   }
 }
 
