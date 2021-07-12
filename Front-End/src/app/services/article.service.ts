@@ -57,4 +57,14 @@ export class ArticleService {
 
     return this.http.put(this.BaseURI+'/Article/EditArticle',body, {params});
   }
+
+  searchArticle(title:string, introduction:string, description:string) : any
+  {
+    const params = new HttpParams()
+      .set('title', title)
+      .set('introduction', introduction)
+      .set('description', description)
+
+    return this.http.get(this.BaseURI+'/Article/SearchArticle', {params});
+  }
 }

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   category:any;
   allCategories:any;
   allArticles:any;
+  searchArticles:any;
   show:boolean = false;
   editBool:boolean = false;
   sectionBool:boolean = false;
@@ -118,6 +119,13 @@ export class HomeComponent implements OnInit {
 
   section3Off() {
     this.sectionBool3 = false;
+  }
+
+  searchArticle(title:string, introduction:string, description:string) {
+    this.articleService.searchArticle(title, introduction, description).subscribe((res:any) => {
+      this.allArticles = res;
+      console.log(this.allArticles);
+    });
   }
 }
 

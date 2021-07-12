@@ -63,5 +63,14 @@ namespace Server.Controllers
 
             return Ok(allArticles);
         }
+
+        [HttpGet]
+        [Route("SearchArticle")]
+        public async Task<ActionResult> SearchArticle(string title, string introduction, string description)
+        {
+            var result = _articleRepository.searchArticle(title, introduction, description);
+
+            return Ok(result);
+        }
     }
 }

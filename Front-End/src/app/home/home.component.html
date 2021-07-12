@@ -43,11 +43,13 @@
         <div class="boxContainer">
             <table class="elementsContainer">
                 <tr>
-                    <td>
-                        <input type="text" placeholder="Search" class="search">
+                    <td style="display: flex; margin-top: 5px;">
+                        <input type="text" #title placeholder="         Title   |" class="search">
+                        <input type="text" #introduction placeholder="Introduction  |" class="search">
+                        <input type="text" #description placeholder="Description" class="search">
                     </td>
                     <td>
-                        <a href="#"><button class="search-btn">Search</button></a>
+                        <a href="#"><button (click)="searchArticle(title.value, introduction.value, description.value)" class="search-btn">Search</button></a>
                     </td>
                 </tr>
             </table>

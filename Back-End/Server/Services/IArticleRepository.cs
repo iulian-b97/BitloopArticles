@@ -12,5 +12,6 @@ namespace Server.Services
         void Edit(string articleId, Article model);
         void Delete(string articleId);
         ICollection<Article> getAllArticles();
+        ICollection<Article> searchArticle(string title, string introduction, string description);
     }
 }

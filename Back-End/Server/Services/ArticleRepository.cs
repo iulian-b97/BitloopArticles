@@ -61,5 +61,27 @@ namespace Server.Services
 
             return allArticles;
         }
+
+        public ICollection<Article> searchArticle(string title, string introduction, string description)
+        {
+            IQueryable<Article> searchArticles = _serverContext.Articles;
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                searchArticles = searchArticles.Where(x => x.Title.Contains(title));
+            }
+
+            if (!string.IsNullOrEmpty(introduction))
+            {
+                searchArticles = searchArticles.Where(x => x.Introduction.Contains(introduction));
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                searchArticles = searchArticles.Where(x => x.Description.Contains(description));
+            }
+
+            return searchArticles.ToList();
+        }
     }
 }
