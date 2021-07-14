@@ -59,22 +59,23 @@
         <div class="wrap">
             <div class="card" *ngFor="let article of allArticles">
                 <a style="text-decoration: none; color: black;" (click)="section3On()">
-                <img src="/assets/images/no_image_startup.png" width="100%" height="150px"/>
+                <img src="/assets/images/no_image_startup.png" width="100%" height="100px"/>
                 <div class="container">
                     <h4>{{article.title}}</h4>
                     <span>{{article.introduction}}</span> <br><br>
-                    <span>{{article.categoryName}}</span> <br><br>
+                    <span><b>{{article.categoryName}}</b></span> <br><br>
+                        <br><br>
                     <span>{{article.date | date: 'HH:mm:ss'}} <br>  {{article.date | date: 'dd/MM/yyyy'}}</span> <br><br>
                 </div>
                 </a>
                 <div class="article-buttons">
-                    <button (click)="section2On()" routerLink='/edit' routerLinkActive='active' class="edit-btn">Edit</button>
+                    <button (click)="section2On()" class="edit-btn">Edit</button>
                     <button (click)="deleteArticle(article.id)" class="delete-btn">Delete</button>
                 </div>
             </div>
         </div>
 
-        <!-- Pagination -->
+        <!-- Pagination 
         <div class="pagination">
             <a href="#">&laquo;</a>
             <a href="#">1</a>
@@ -85,6 +86,7 @@
             <a href="#">6</a>
             <a href="#">&raquo;</a>
         </div>
+        -->
     </div>
 </section>
 
@@ -103,7 +105,11 @@
                     <h2 style="color: #fff; text-align: center;">Introduction:</h2>
                     <textarea style="width: 60%; min-height: 100px;" formControlName="Introduction" type="text" placeholder="{{article.introduction}}" contenteditable="true"></textarea> <br> <br>
                     <h2 style="color: #fff; text-align: center;">Category:</h2>
-                    <input class="custom-input" formControlName="CategoryName" type="text" placeholder="{{article.categoryName}}" contenteditable="true"> <br> <br>
+                    <select formControlName="CategoryName">
+                        <option>-- none --</option>
+                        <option *ngFor="let category of allCategories">{{category.name}}</option>
+                    </select>
+                    <br> <br> <br>
                     <button style="margin:10px" type="submit" class="add-btn">Modify Article</button>
                     <button type="submit" (click)="section2Off()" class="cancel-btn">Cancel</button>
                 </div>

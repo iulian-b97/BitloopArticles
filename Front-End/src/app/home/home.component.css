@@ -47,6 +47,7 @@
     padding-bottom: 5px;
 }
 
+
 .edit-btn {
     background-color: green;
     color: white;
@@ -181,7 +182,7 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
     transition: 0.5s;
-    width: 175px;
+    width: 165px;
     height: 400px;
     background: #fff;
     text-align: center;
@@ -191,7 +192,9 @@
     margin: 10px;
     border: 2px solid white;
     cursor: pointer;
+    padding: 5px;
 }
+
 
 /* Edit Article */
 .article-box {
@@ -221,6 +224,12 @@
     border: 2px solid white;
     text-align: center;
     margin: auto;
+}
+
+.card-1 select {
+    margin: auto;
+    width: 60%;
+    font-size: 20px;
 }
 
 .card-2 {

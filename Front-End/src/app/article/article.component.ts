@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArticleService } from '../services/article.service';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-article',
@@ -10,11 +11,15 @@ import { ArticleService } from '../services/article.service';
 export class ArticleComponent implements OnInit {
 
   allArticles:any;
+  allCategories:any;
 
-  constructor(public articleService: ArticleService, public router: Router) { }
+  constructor(public articleService: ArticleService, public categoryService: CategoryService, public router: Router) { }
 
   ngOnInit(): void {
-     
+     this.categoryService.getAllCategories().subscribe((res:any) => {
+        this.allCategories = res;
+        console.log(this.allCategories);
+     });
   }
 
   addNewArticle() {

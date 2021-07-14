@@ -10,7 +10,11 @@
                 <h2 style="color: #fff; text-align: center;">Introduction:</h2>
                 <textarea style="width: 60%; min-height: 100px;" formControlName="Introduction" type="text"></textarea> <br> <br>
                 <h2 style="color: #fff; text-align: center;">Category:</h2>
-                <input class="custom-input" formControlName="CategoryName" type="text"> <br> <br>
+                <select formControlName="CategoryName">
+                    <option>-- none --</option>
+                    <option *ngFor="let category of allCategories">{{category.name}}</option>
+                </select> 
+                <br><br>
                 <button style="margin: 10px;" type="submit" class="add-btn">Add Article</button>
                 <button (click)="redirectHome()" type="submit" class="cancel-btn">Cancel</button>
             </div>

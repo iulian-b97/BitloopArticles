@@ -27,7 +27,10 @@ namespace Server.Services
                 CategoryName = model.CategoryName
             };
 
+
             article.Id = Guid.NewGuid().ToString();
+            var category = _serverContext.Categories.FirstOrDefault(x => x.Name.Equals(article.CategoryName));
+            article.CategoryId = category.Id;
             article.Date = DateTime.Now;
 
             _serverContext.Articles.Add(article);
@@ -49,6 +52,8 @@ namespace Server.Services
             existingArticle.Title = model.Title;
             existingArticle.Introduction = model.Introduction;
             existingArticle.CategoryName = model.CategoryName;
+            var category = _serverContext.Categories.FirstOrDefault(x => x.Name.Equals(existingArticle.CategoryName));
+            existingArticle.CategoryId = category.Id;
             existingArticle.Date = DateTime.Now;
 
             _serverContext.SaveChanges();
