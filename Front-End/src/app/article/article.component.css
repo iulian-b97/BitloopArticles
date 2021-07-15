@@ -27,6 +27,12 @@
     margin: auto;
 }
 
+.card-1 select {
+    margin: auto;
+    width: 60%;
+    font-size: 20px;
+}
+
 .card-2 {
     background-color: white;
     width: 70%;

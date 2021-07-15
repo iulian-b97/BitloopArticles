@@ -12,7 +12,11 @@ export class HomeComponent implements OnInit {
   category:any;
   allCategories:any;
   allArticles:any;
+  allArticlesPagination:any;
   searchArticles:any;
+  currentPage:number = 1;
+  totalPages:any;
+  pagination:any;
   show:boolean = false;
   editBool:boolean = false;
   sectionBool:boolean = false;
@@ -31,6 +35,10 @@ export class HomeComponent implements OnInit {
     this.articleService.getAllArticles().subscribe((res:any) => {
       this.allArticles = res;
       console.log(this.allArticles);
+    });
+    this.articleService.getTotalPages().subscribe((res:any) => {
+      this.totalPages = res;
+      console.log(this.totalPages);
     });
   }
   
@@ -91,6 +99,46 @@ export class HomeComponent implements OnInit {
     this.sectionBool = false;
   }
 
+  previousArticlePaginationList(currentPage:any, pageSize:any) {
+    this.articleService.getArticlePaginationList(currentPage, pageSize).subscribe((res:any) => {
+      this.pagination = res;
+      console.log(this.pagination);
+      this.allArticlesPagination = Object.values(this.pagination)[1];
+      console.log(this.allArticlesPagination);
+    });
+
+      --this.currentPage;
+    console.log(this.currentPage);
+  }
+
+  selectArticlePaginationList(currentPage:any, pageSize:any) {
+    this.articleService.getArticlePaginationList(currentPage, pageSize).subscribe((res:any) => {
+      this.pagination = res;
+      console.log(this.pagination);
+      this.allArticlesPagination = Object.values(this.pagination)[1];
+      console.log(this.allArticlesPagination);
+    });
+
+    this.currentPage = currentPage;
+    console.log(this.currentPage);
+  }
+
+  nextArticlePaginationList(currentPage:any, pageSize:any) {
+    this.articleService.getArticlePaginationList(currentPage, pageSize).subscribe((res:any) => {
+      this.pagination = res;
+      console.log(this.pagination);
+      this.allArticlesPagination = Object.values(this.pagination)[1];
+      console.log(this.allArticlesPagination);
+    });
+
+    ++this.currentPage;
+    console.log(this.currentPage);
+  }
+
+  counter() {
+    return new Array(this.totalPages);
+  }
+
   deleteArticle(articleId:any) {
     this.articleService.deleteArticle(articleId).subscribe((res:any) => {
       console.log(res);
@@ -123,8 +171,8 @@ export class HomeComponent implements OnInit {
 
   searchArticle(title:string, introduction:string, description:string) {
     this.articleService.searchArticle(title, introduction, description).subscribe((res:any) => {
-      this.allArticles = res;
-      console.log(this.allArticles);
+      this.allArticlesPagination = res;
+      console.log(this.allArticlesPagination);
     });
   }
 }

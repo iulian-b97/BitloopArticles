@@ -37,6 +37,18 @@ export class ArticleService {
     return this.http.get(this.BaseURI+'/Article/GetAllArticles');
   }
 
+  getArticlePaginationList(currentPage:any, pageSize:any) : any {
+    const params = new HttpParams()
+      .set('currentPage', currentPage)
+      .set('pageSize', pageSize)
+
+      return this.http.get(this.BaseURI+'/Article/GetArticlePaginationList', {params});
+  }
+
+  getTotalPages() : any {
+    return this.http.get(this.BaseURI+'/Article/GetTotalPages');
+  }
+
   deleteArticle(articleId:any) {
     const params = new HttpParams()
       .set('articleId', articleId)

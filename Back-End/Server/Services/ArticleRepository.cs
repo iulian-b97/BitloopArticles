@@ -1,7 +1,10 @@
 ﻿using Library.Data;
 using Library.Entities;
+using Library.Models;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -65,6 +68,49 @@ namespace Server.Services
             allArticles = _serverContext.Articles.OrderByDescending(x => x.Date).ToList();
 
             return allArticles;
+        }
+
+        public ArticlePagingList GetArticlePagingList(int currentPage = 1, int pageSize = 5)
+        {
+            var model = new ArticlePagingList();
+
+            var articlesList = (from a in _serverContext.Articles
+                                select new Article
+                                {
+                                    Id = a.Id,
+                                    Title = a.Title,
+                                    Introduction = a.Introduction,
+                                    Description = a.Description,
+                                    CategoryName = a.CategoryName,
+                                    CategoryId = a.CategoryId,
+                                    Date = a.Date
+                                }).OrderByDescending(a => a.Date).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
+            model.ArticlesList = articlesList;
+
+            int totalRecord = _serverContext.Articles.Count();
+
+            var page = new Pagination
+            {
+                Count = totalRecord,
+                CurrentPage = currentPage,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling(decimal.Divide(totalRecord, pageSize)),
+                IndexOne = ((currentPage - 1) * pageSize + 1),
+                IndexTwo = (((currentPage - 1) * pageSize + pageSize) <= totalRecord ? ((currentPage - 1) * pageSize + pageSize) : totalRecord)
+            };
+
+            model.Pagination = page;
+
+            return model;
+        }
+
+        public int GetTotalPages()
+        {
+            int totalRecord = _serverContext.Articles.Count();
+            int totalPages = (int)Math.Ceiling(decimal.Divide(totalRecord, 5));
+
+            return totalPages;
         }
 
         public ICollection<Article> searchArticle(string title, string introduction, string description)

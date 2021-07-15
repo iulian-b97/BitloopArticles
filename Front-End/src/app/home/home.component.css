@@ -352,7 +352,8 @@
     border: 2px solid #2980b9;
     bottom: 0;
     margin: auto;
-    margin-left: 400px;
+    margin-left: 470px;
+    width: auto;
   }
 
   
@@ -390,17 +391,8 @@
     }
 
     .pagination {
-        margin-left: 0px;  
-        width: 370px;
+        margin:auto;
     }
 }
 
-@media (max-width:1500px)
-{
-
-    .pagination {
-        margin-left: -80px;  
-        width: 370px;
-    }
-}
 

@@ -1,7 +1,9 @@
 ﻿using Library.Data;
 using Library.Entities;
+using Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Server.Services;
 using System;
 using System.Collections.Generic;
@@ -62,6 +64,29 @@ namespace Server.Controllers
             allArticles = _articleRepository.getAllArticles();
 
             return Ok(allArticles);
+        }
+
+        [HttpGet]
+        [Route("GetArticlePaginationList")]
+        public ActionResult<ArticlePagingList> GetArticlePaginationList(int currentPage = 1, int pageSize = 5)
+        {
+            var result = _articleRepository.GetArticlePagingList(currentPage, pageSize);
+
+            if(result == null)
+            {
+                return NotFound(result);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetTotalPages")]
+        public ActionResult<ArticlePagingList> GetTotalPages()
+        {
+            var result = _articleRepository.GetTotalPages();
+
+            return Ok(result);
         }
 
         [HttpGet]
