@@ -57,6 +57,15 @@ namespace Server.Controllers
         }
 
         [HttpGet]
+        [Route("GetArticle")]
+        public async Task<ActionResult> GetArticle(string articleId)
+        {
+            Article article = _articleRepository.getArticle(articleId);
+
+            return Ok(article);
+        }
+
+        [HttpGet]
         [Route("GetAllArticles")]
         public async Task<ActionResult> GetAllArticles()
         {

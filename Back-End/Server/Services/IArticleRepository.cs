@@ -12,6 +12,7 @@ namespace Server.Services
         void Add(Article model);
         void Edit(string articleId, Article model);
         void Delete(string articleId);
+        Article getArticle(string articleId);
         ICollection<Article> getAllArticles();
         ICollection<Article> searchArticle(string title, string introduction, string description);
         public ArticlePagingList GetArticlePagingList(int currentPage = 1, int pageSize = 5);

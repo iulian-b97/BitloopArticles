@@ -55,8 +55,9 @@ namespace Server.Services
             existingArticle.Title = model.Title;
             existingArticle.Introduction = model.Introduction;
             existingArticle.CategoryName = model.CategoryName;
-            var category = _serverContext.Categories.FirstOrDefault(x => x.Name.Equals(existingArticle.CategoryName));
-            existingArticle.CategoryId = category.Id;
+            var categoryId = _serverContext.Categories.Where(x => x.Name.Equals(existingArticle.CategoryName)).Select(x => x.Id).ToString();
+            existingArticle.CategoryId = categoryId;
+            existingArticle.Description = model.Description;
             existingArticle.Date = DateTime.Now;
 
             _serverContext.SaveChanges();
@@ -68,6 +69,13 @@ namespace Server.Services
             allArticles = _serverContext.Articles.OrderByDescending(x => x.Date).ToList();
 
             return allArticles;
+        }
+
+        public Article getArticle(string articleId)
+        {
+            Article article = _serverContext.Articles.FirstOrDefault(x => x.Id.Equals(articleId));
+
+            return article;
         }
 
         public ArticlePagingList GetArticlePagingList(int currentPage = 1, int pageSize = 5)

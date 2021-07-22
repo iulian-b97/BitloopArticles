@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -33,6 +33,13 @@ export class ArticleService {
     return this.http.post(this.BaseURI+'/Article/AddArticle', body);
   }
 
+  getArticle(articleId:any) : any {
+    const params = new HttpParams()
+      .set('articleId', articleId)
+
+    return this.http.get(this.BaseURI+'/Article/GetArticle', {params});
+  }
+
   getAllArticles() : any {
     return this.http.get(this.BaseURI+'/Article/GetAllArticles');
   }
@@ -56,8 +63,19 @@ export class ArticleService {
     return this.http.delete(this.BaseURI+'/Article/DeleteArticle', {params});
   }
 
-  editArticle(articleId:any) {
-    var body = {
+  /*setForm(articleId:any) {
+    this.getArticle (articleId).subscribe((data:FormGroup) => this.editForm = data);
+
+       this.articleModel.patchValue({
+         Title: this.editForm.value.Title,
+         Introduction: this.editForm.value.Introduction,
+         Description: this.editForm.value.Description,
+         CategoryName: this.editForm.value.CategoryName
+        });
+  }*/
+
+  editArticle(articleId:any) {  
+      var body = {
       Title: this.articleModel.value.Title,
       Introduction: this.articleModel.value.Introduction,
       Description: this.articleModel.value.Description,
