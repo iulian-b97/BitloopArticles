@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -13,7 +13,7 @@ export class CategoryService {
   readonly BaseURI = "http://localhost:56514/api";
 
   categoryModel = this.fb.group({
-    Name :['']
+    Name :['',Validators.required]
   });
 
   addCategory() : any

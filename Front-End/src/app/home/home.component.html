@@ -15,7 +15,7 @@
 
                     <form [formGroup]="categoryService.categoryModel" autocomplete="off" (submit)="editCategory(category.id)">
                         <h2 style="color: #fff; text-align: center;">Name:</h2>
-                        <input class="custom-input" formControlName="Name" type="text" placeholder="{{category.name}}"> <br> <br>
+                        <input class="custom-input" formControlName="Name" type="text" [ngModel]="category.name"> <br> <br>
                         <button type="submit" class="add-btn">Modify</button>   
                     </form>
                     <button (click)="editOff()" class="cancel-btn">Cancel</button>
@@ -30,8 +30,10 @@
         <div class="add-category" *ngIf="show">
             <form [formGroup]="categoryService.categoryModel" autocomplete="off" (submit)="addNewCategory()">
                 <h2 style="color: #fff; text-align: center;">Name:</h2>
-                <input class="custom-input" formControlName="Name" type="text" placeholder="Write here..."> <br> <br>
-                <button type="submit" class="add-btn">Save Category</button>
+                <input class="custom-input" formControlName="Name" type="text" placeholder="Write here..."> <br>
+                <label style="font-size: 15px; padding: 3px; background-color:rgb(202, 193, 193); margin-top: 10px; border-radius: 5px;" class="text-danger" *ngIf="categoryService.categoryModel.get('Name').touched && categoryService.categoryModel.get('Name').errors?.required">Field is required!</label>
+                <br> <br>
+                <button type="submit" class="add-btn" [disabled]="!categoryService.categoryModel.valid">Save Category</button>
             </form>
             <button type="submit" class="cancel-btn" *ngIf="show" (click)="showOff()">Cancel</button>
         </div>
@@ -76,7 +78,7 @@
         </div>
 
         <!-- Pagination -->
-        <div class="pagination">
+        <div class="pagination" *ngIf="showPagination">
             <a href="#" *ngIf="currentPage > 1" (click)="previousArticlePaginationList(currentPage-1, 5)">&laquo;</a>
             <a href="#" *ngIf="currentPage == 1">&laquo;</a>
             <div style="display: inline-block;" *ngFor='let in of counter() ;let i = index' (click)="selectArticlePaginationList(i+1, 5)">
@@ -98,12 +100,12 @@
         <div class="article-header">
             <h1>Edit Article</h1>
         </div>
-        <div *ngFor="let article of allArticles">
+        <div *ngFor="let article of allArticlesPagination">
         <form [formGroup]="articleService.articleModel" *ngIf="article.id == getArticleId" autocomplete="off" (submit)="editArticle(article.id)">
             <div class="row">
                 <div class="card-1">
                     <h2 style="color: #fff; text-align: center;">Title:</h2>
-                    <input class="custom-input" formControlName="Title" type="text" [ngModel]="article.title" > <br> <br>
+                    <input class="custom-input" formControlName="Title" type="text" [ngModel]="article.title"> <br> <br>
                     <h2 style="color: #fff; text-align: center;">Introduction:</h2>
                     <textarea style="width: 60%; min-height: 100px;" formControlName="Introduction" [ngModel]="article.introduction"></textarea> <br> <br>
                     <h2 style="color: #fff; text-align: center;">Category:</h2>

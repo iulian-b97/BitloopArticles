@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -13,10 +13,10 @@ export class ArticleService {
   readonly BaseURI = "http://localhost:56514/api";
 
   articleModel = this.fb.group({
-    Title :[''],
-    Introduction :[''],
-    Description :[''],
-    CategoryName :['']
+    Title :['',Validators.required],
+    Introduction :['',Validators.required],
+    Description :['',Validators.required],
+    CategoryName :['',Validators.required]
   });
 
   addArticle() {

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   pagination:any;
 
   show:boolean = false;
+  showPagination:boolean = true;
   editBool:boolean = false;
   sectionBool:boolean = false;
   sectionBool2:boolean = false;
@@ -37,9 +38,11 @@ export class HomeComponent implements OnInit {
         console.log(this.allCategories);
       }
     );
-    this.articleService.getAllArticles().subscribe((res:any) => {
-      this.allArticles = res;
-      console.log(this.allArticles);
+    this.articleService.getArticlePaginationList(1, 5).subscribe((res:any) => {
+      this.pagination = res;
+      console.log(this.pagination);
+      this.allArticlesPagination = Object.values(this.pagination)[1];
+      console.log(this.allArticlesPagination);
     });
     this.articleService.getTotalPages().subscribe((res:any) => {
       this.totalPages = res;
@@ -86,6 +89,7 @@ export class HomeComponent implements OnInit {
 
   editOff() {
     this.editBool = false;
+    this.categoryService.categoryModel.reset();
   }
 
   editCategory(categoryId:any) {
@@ -93,6 +97,8 @@ export class HomeComponent implements OnInit {
       console.log(res);
       this.ngOnInit();
     });
+
+    this.categoryService.categoryModel.reset();
 
     this.editBool = false;
   }
@@ -183,6 +189,8 @@ export class HomeComponent implements OnInit {
       this.allArticlesPagination = res;
       console.log(this.allArticlesPagination);
     });
+
+    this.showPagination = false;
   }
 }
 

@@ -16,6 +16,7 @@ export class ArticleComponent implements OnInit {
   constructor(public articleService: ArticleService, public categoryService: CategoryService, public router: Router) { }
 
   ngOnInit(): void {
+    this.articleService.articleModel.reset();
      this.categoryService.getAllCategories().subscribe((res:any) => {
         this.allCategories = res;
         console.log(this.allCategories);
