@@ -40,6 +40,13 @@ namespace Server.Services
             _serverContext.SaveChanges();
         }
 
+        public int CountArticlesPerCategory(string categoryName)
+        {
+            int count = _serverContext.Articles.Where(x => x.CategoryName.Equals(categoryName)).Count();
+
+            return count;
+        }
+
         public void Delete(string articleId)
         {
             var article = _serverContext.Articles.Find(articleId);

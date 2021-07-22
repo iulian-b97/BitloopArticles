@@ -9,6 +9,8 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryService } from './services/category.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { ArticleService } from './services/article.service';
 
 
@@ -24,7 +26,14 @@ import { ArticleService } from './services/article.service';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: 'toast-top-center',
+      preventDuplicates: false,
+      progressBar: true
+    })
   ],
   providers: [
     CategoryService,

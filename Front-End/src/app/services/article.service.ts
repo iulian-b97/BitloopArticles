@@ -56,6 +56,13 @@ export class ArticleService {
     return this.http.get(this.BaseURI+'/Article/GetTotalPages');
   }
 
+  countArticlesByCategory(categoryName:any) {
+    const params = new HttpParams()
+      .set('categoryName', categoryName)
+
+    return this.http.get(this.BaseURI+'/Article/CountArticlesByCategory', {params});
+  }
+
   deleteArticle(articleId:any) {
     const params = new HttpParams()
       .set('articleId', articleId)

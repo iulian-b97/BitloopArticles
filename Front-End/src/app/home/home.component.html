@@ -9,7 +9,7 @@
                     <span><b>Name:</b> {{category.name}}</span> <br>
                     <span><b>Date:</b> {{category.date | date: 'HH:mm:ss'}}  {{category.date | date: 'dd/MM/yyyy'}}</span> <br>
                     <button (click)="editOn(category.id)" class="edit-btn">Edit</button>
-                    <button (click)="deleteCategory(category.id)" class="delete-btn">Delete</button>
+                    <button (click)="deleteCategory(category.id, category.name)" class="delete-btn">Delete</button>
                 </div>
                 <div class="edit-box" *ngIf="editBool && category.id == getCategoryId">
 

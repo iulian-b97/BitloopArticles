@@ -51,7 +51,7 @@ namespace Server.Controllers
         {
             _categoryRepository.Delete(categoryId);
 
-            return Ok("Success!");
+            return Ok();
         }
 
         [HttpGet]

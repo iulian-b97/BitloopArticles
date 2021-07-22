@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from '../services/article.service';
 import { CategoryService } from '../services/category.service';
 
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   category:any;
   getCategoryId:any;
+  countArticlesByCt:any;
   allCategories:any;
   allArticles:any;
   getArticleId:any;
@@ -29,7 +31,8 @@ export class HomeComponent implements OnInit {
   sectionBool3:boolean = false;
   editCategoryName:boolean = false;
 
-  constructor(public categoryService: CategoryService, public articleService: ArticleService, public fb: FormBuilder) { }
+  constructor(public categoryService: CategoryService, public articleService: ArticleService,
+                     public fb: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
@@ -75,12 +78,22 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  deleteCategory(categoryId:any) {
-    window.location.reload();
-    this.categoryService.deleteCategory(categoryId).subscribe((res) => {
-      console.log(res);
-    });
-  }
+  deleteCategory(categoryId:any, categoryName:any) {
+    this.articleService.countArticlesByCategory(categoryName).subscribe(res => this.countArticlesByCt = res);
+
+    if(this.countArticlesByCt === 0)
+    {
+      window.location.reload();
+      this.categoryService.deleteCategory(categoryId).subscribe((res) => {
+      console.log(this.countArticlesByCt);
+      });
+    }
+    else
+    {
+      this.toastr.error('The Category cannot be deleted because there are Articles that use it');
+    }
+    
+  } 
 
   editOn(categoryId:any) {
     this.editBool = true;

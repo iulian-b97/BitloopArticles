@@ -106,5 +106,14 @@ namespace Server.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("CountArticlesByCategory")]
+        public async Task<ActionResult> CountArticlesByCategory(string categoryName)
+        {
+            int count = _articleRepository.CountArticlesPerCategory(categoryName);
+
+            return Ok(count);
+        }
     }
 }
