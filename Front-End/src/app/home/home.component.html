@@ -7,9 +7,16 @@
             <div class="category-box" *ngFor="let category of allCategories">
                 <div class="edit-box" *ngIf="!editBool">
                     <span><b>Name:</b> {{category.name}}</span> <br>
-                    <span><b>Date:</b> {{category.date | date: 'HH:mm:ss'}}  {{category.date | date: 'dd/MM/yyyy'}}</span> <br>
-                    <button (click)="editOn(category.id)" class="edit-btn">Edit</button>
-                    <button (click)="deleteCategory(category.id, category.name)" class="delete-btn">Delete</button>
+                    <span><b>Date:</b> {{category.date | date: 'HH:mm:ss'}}  {{category.date | date: 'dd/MM/yyyy'}}</span> <br> <br>
+                    <div *ngIf="!deleteBool">
+                        <button (click)="editOn(category.id)" class="edit-btn">Edit</button>
+                        <button (click)="deleteCategory(category.id)" class="delete-btn">Delete</button>
+                    </div>
+                    <div *ngIf="deleteBool && category.id == getCategoryId">
+                        <span style="text-align: center; color: white; font-size: 18px;">Sure?</span> <br>
+                        <button (click)="confirmDelete(category.id)" class="edit-btn">Yes</button>
+                        <button (click)="deleteOff()" class="delete-btn">No</button>
+                    </div>
                 </div>
                 <div class="edit-box" *ngIf="editBool && category.id == getCategoryId">
 

@@ -40,9 +40,9 @@ namespace Server.Services
             _serverContext.SaveChanges();
         }
 
-        public int CountArticlesPerCategory(string categoryName)
+        public int CountArticlesPerCategory(string categoryId)
         {
-            int count = _serverContext.Articles.Where(x => x.CategoryName.Equals(categoryName)).Count();
+            int count = _serverContext.Articles.Where(x => x.CategoryId.Equals(categoryId)).Count();
 
             return count;
         }

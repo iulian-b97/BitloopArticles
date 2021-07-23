@@ -17,6 +17,6 @@ namespace Server.Services
         ICollection<Article> searchArticle(string title, string introduction, string description);
         public ArticlePagingList GetArticlePagingList(int currentPage = 1, int pageSize = 5);
         public int GetTotalPages();
-        public int CountArticlesPerCategory(string categoryName);
+        public int CountArticlesPerCategory(string categoryId);
     }
 }

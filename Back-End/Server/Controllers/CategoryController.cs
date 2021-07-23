@@ -55,6 +55,15 @@ namespace Server.Controllers
         }
 
         [HttpGet]
+        [Route("GetCategory")]
+        public async Task<ActionResult> GetCategory(string categoryId)
+        {
+            Category category = _categoryRepository.getCategory(categoryId);
+
+            return Ok(category);
+        }
+
+        [HttpGet]
         [Route("GetAllCategories")]
         public async Task<ActionResult> GetAllCategories()
         {

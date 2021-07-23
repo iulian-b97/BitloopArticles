@@ -27,13 +27,26 @@ export class CategoryService {
     return this.http.post(this.BaseURI+'/Category/AddCategory', body);
   }
 
+  getCategory(categoryId:any) {
+    const params = new HttpParams()
+      .set('categoryId', categoryId)
+
+    return this.http.get(this.BaseURI+'/Category/GetCategory', {params});
+  }
+
   getAllCategories() : any
   {
     return this.http.get(this.BaseURI+'/Category/GetAllCategories');
   }
 
-  deleteCategory(categoryId:any) {
+  countArticlesByCategory(categoryId:any) {
+    const params = new HttpParams()
+      .set('categoryId', categoryId)
 
+    return this.http.get(this.BaseURI+'/Article/CountArticlesByCategory', {params});
+  }
+
+  deleteCategory(categoryId:any) {
     const params = new HttpParams()
       .set('categoryId', categoryId)
 

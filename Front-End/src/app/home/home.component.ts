@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   getCategoryId:any;
   countArticlesByCt:any;
   allCategories:any;
+  nr:any;
   allArticles:any;
   getArticleId:any;
   allArticlesPagination:any;
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   show:boolean = false;
   showPagination:boolean = true;
   editBool:boolean = false;
+  deleteBool:boolean = false;
   sectionBool:boolean = false;
   sectionBool2:boolean = false;
   sectionBool3:boolean = false;
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
   
   showOn() {
     this.show = true;
+    this.categoryService.categoryModel.reset();
   }
 
   showOff() {
@@ -78,22 +81,34 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  deleteCategory(categoryId:any, categoryName:any) {
-    this.articleService.countArticlesByCategory(categoryName).subscribe(res => this.countArticlesByCt = res);
+  deleteCategory(categoryId:any) {
+    
+    this.deleteBool = true;
+    this.getCategoryId = categoryId;
 
-    if(this.countArticlesByCt === 0)
+    this.categoryService.countArticlesByCategory(categoryId).subscribe(res => {
+      this.nr = res;
+      console.log(this.nr);
+    });
+  } 
+
+  confirmDelete(categoryId:any) {
+    if(this.nr === 0)
     {
       window.location.reload();
-      this.categoryService.deleteCategory(categoryId).subscribe((res) => {
-      console.log(this.countArticlesByCt);
+      this.categoryService.deleteCategory(categoryId).subscribe((res:any) => {
+        console.log(res);
       });
     }
     else
     {
       this.toastr.error('The Category cannot be deleted because there are Articles that use it');
     }
-    
-  } 
+  }
+
+  deleteOff() {
+    this.deleteBool = false;
+  }
 
   editOn(categoryId:any) {
     this.editBool = true;

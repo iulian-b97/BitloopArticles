@@ -58,6 +58,13 @@ namespace Server.Services
             return allCategories;
         }
 
+        public Category getCategory(string categoryId)
+        {
+            Category category = _serverContext.Categories.FirstOrDefault(x => x.Id.Equals(categoryId));
+
+            return category;
+        }
+
         public string GetIdByName(string categoryName)
         {
             var category = _serverContext.Categories.FirstOrDefault(x => x.Name.Equals(categoryName));

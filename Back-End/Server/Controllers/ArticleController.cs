@@ -109,9 +109,9 @@ namespace Server.Controllers
 
         [HttpGet]
         [Route("CountArticlesByCategory")]
-        public async Task<ActionResult> CountArticlesByCategory(string categoryName)
+        public async Task<ActionResult> CountArticlesByCategory(string categoryId)
         {
-            int count = _articleRepository.CountArticlesPerCategory(categoryName);
+            int count = _articleRepository.CountArticlesPerCategory(categoryId);
 
             return Ok(count);
         }
