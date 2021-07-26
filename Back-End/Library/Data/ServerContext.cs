@@ -29,7 +29,8 @@ namespace Library.Data
             //Category - Article (one to many)
             modelBuilder.Entity<Category>()
                 .HasMany(x => x.Articles)
-                .WithOne(y => y.Category);
+                .WithOne(y => y.Category)
+                .HasForeignKey(y => y.CategoryId);
         }
     }
 }

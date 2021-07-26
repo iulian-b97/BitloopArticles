@@ -1,0 +1,136 @@
+.category-container {
+    background: rgb(88,97,89);
+    background: linear-gradient(45deg, rgba(88,97,89,1) 20%, rgba(69, 73, 70, 0.777) 49%, rgb(121, 125, 134) 95%);
+    width: 20%;
+    max-height: 700px;
+    margin-left: 25px;
+    margin-top: 60px;
+    border: 2px solid white;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.all-category {
+    max-height: 420px;
+    overflow: auto;
+}
+
+.category-header {
+    border-bottom: 2px solid white;
+    border-radius: 10px;
+}
+
+.category-box {
+    border-bottom: 2px solid white;
+    border-radius: 10px;
+    padding:10px;
+}
+
+.category-box span {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.edit-box {
+    background-color: transparent;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.edit-box span {
+    text-align: center; 
+    color: white; 
+    font-size: 18px;
+}
+
+.edit-box h2 {
+    color: #fff; 
+    text-align: center;
+}
+
+.category-header h1 {
+    color: white;
+    text-align: center;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+
+.edit-btn {
+    background-color: green;
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.edit-btn:hover {
+    background-color: rgb(155, 135, 24);
+    transition: 0.5s;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px; 
+}
+
+.delete-btn:hover {
+    background-color: rgb(155, 135, 24);
+    transition: 0.5s;
+}
+
+.category-buttons {
+    float: right;
+    margin-top: -5px;
+}
+
+.add-btn {
+    background-color: green;
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.add-btn:hover {
+    background-color: rgb(155, 135, 24);
+    transition: 0.5s;
+}
+
+.cancel-btn {
+    background-color: rgb(155, 135, 24);
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 110px;
+}
+
+.cancel-btn:hover {
+    background-color: red;
+    transition: 0.5s;
+}
+
+.add-category {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin: 15px;
+}
+
+
+.custom-input {
+    border: 2px solid white;
+    text-align: center;
+    font-size: 15px;
+    width: 60%;
+}

@@ -1,0 +1,29 @@
+<div class="article-box">
+    <div class="article-header">
+        <h1>New Article</h1>
+    </div>
+    <form [formGroup]="articleService.articleModel" autocomplete="off" (submit)="addNewArticle()">
+        <div class="row">
+            <div class="card-1">
+                <h2>Title:</h2>
+                <input class="custom-input" formControlName="Title" type="text"> <br>
+                <label class="text-danger" *ngIf="articleService.articleModel.get('Title').touched && articleService.articleModel.get('Title').errors?.required">Field is required!</label>
+                <br> <br>
+                <h2>Introduction:</h2>
+                <textarea formControlName="Introduction" type="text"></textarea> <br>
+                <label class="text-danger" *ngIf="articleService.articleModel.get('Introduction').touched && articleService.articleModel.get('Introduction').errors?.required">Field is required!</label>
+                <br> <br>
+                <h2>Category:</h2>
+                <select formControlName="CategoryName">
+                    <option>-- none --</option>
+                    <option *ngFor="let category of allCategories">{{category.name}}</option>
+                </select> <br>
+                <label class="text-danger" *ngIf="articleService.articleModel.get('CategoryName').touched && articleService.articleModel.get('CategoryName').errors?.required">Field is required!</label>
+                <br><br>
+                <button type="submit" class="add-btn">Add Article</button>
+                <button (click)="redirectHome()" type="submit" class="cancel-btn">Cancel</button>
+            </div>
+            <textarea formControlName="Description" class="card-2"></textarea>
+        </div>
+    </form>
+</div>

@@ -2,6 +2,7 @@
 using Library.Entities;
 using Library.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -62,8 +63,7 @@ namespace Server.Services
             existingArticle.Title = model.Title;
             existingArticle.Introduction = model.Introduction;
             existingArticle.CategoryName = model.CategoryName;
-            var categoryId = _serverContext.Categories.Where(x => x.Name.Equals(existingArticle.CategoryName)).Select(x => x.Id).ToString();
-            existingArticle.CategoryId = categoryId;
+            existingArticle.CategoryId = GetCategoryIdByName(existingArticle.CategoryName);
             existingArticle.Description = model.Description;
             existingArticle.Date = DateTime.Now;
 
@@ -118,6 +118,13 @@ namespace Server.Services
             model.Pagination = page;
 
             return model;
+        }
+
+        public string GetCategoryIdByName(string categoryName)
+        {
+            var rez = _serverContext.Categories.FirstOrDefault(x => x.Name.Equals(categoryName));
+
+            return rez.Id;
         }
 
         public int GetTotalPages()

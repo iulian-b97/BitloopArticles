@@ -1,0 +1,21 @@
+<section>
+    <div class="article-box" *ngIf="article">
+        <div class="article-header">
+            <h1>View Article</h1>
+        </div>
+        <div>
+            <div class="row">
+                <div class="card-1">
+                    <h2>Title:</h2>
+                    <input class="custom-input" type="text" value="{{article.title}}" readonly> <br> <br>
+                    <h2>Introduction:</h2>
+                    <textarea type="text" value="{{article.introduction}}" readonly></textarea> <br> <br>
+                    <h2>Category:</h2>
+                    <input class="custom-input" type="text" value="{{article.categoryName}}" readonly> <br> <br>
+                    <button type="submit" (click)="section3Off()" class="cancel-btn">Cancel</button>
+                </div>
+                <textarea value="{{article.description}}" readonly class="card-2"></textarea>
+            </div>
+        </div>
+    </div>
+</section>

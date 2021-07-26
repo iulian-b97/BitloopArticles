@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   countArticlesByCt:any;
   allCategories:any;
   nr:any;
+  article:any;
   allArticles:any;
-  getArticleId:any;
+  getArticleId:string;
   allArticlesPagination:any;
   searchArticles:any;
   currentPage:number = 1;
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public categoryService: CategoryService, public articleService: ArticleService,
                      public fb: FormBuilder, private toastr: ToastrService) { }
+
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
@@ -197,6 +199,11 @@ export class HomeComponent implements OnInit {
     this.sectionBool2 = true;
     this.getArticleId = articleId;
     //this.articleService.setForm(articleId);
+    this.articleService.getArticle(this.getArticleId).subscribe((res:any) => {
+      this.article = res;
+      console.log(this.getArticleId);
+      console.log(this.article);
+    });
   }
 
   section2Off() {
@@ -206,6 +213,11 @@ export class HomeComponent implements OnInit {
   section3On(articleId:any) {
     this.sectionBool3 = true;
     this.getArticleId = articleId;
+    this.articleService.getArticle(this.getArticleId).subscribe((res:any) => {
+      this.article = res;
+      console.log(this.getArticleId);
+      console.log(this.article);
+    });
   }
 
   section3Off() {

@@ -4,11 +4,11 @@ import { ArticleService } from '../services/article.service';
 import { CategoryService } from '../services/category.service';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  selector: 'app-add-article',
+  templateUrl: './add-article.component.html',
+  styleUrls: ['./add-article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class AddArticleComponent implements OnInit {
 
   allArticles:any;
   allCategories:any;
@@ -32,6 +32,7 @@ export class ArticleComponent implements OnInit {
   }
 
   redirectHome() {
-    this.router.navigateByUrl('/home');
+    window.location.reload();
   }
+
 }

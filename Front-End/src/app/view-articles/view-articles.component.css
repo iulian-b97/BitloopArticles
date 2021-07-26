@@ -1,0 +1,111 @@
+.article-box {
+    background: rgb(88,97,89);
+    background: linear-gradient(45deg, rgba(88,97,89,1) 20%, rgba(69, 73, 70, 0.777) 49%, rgb(121, 125, 134) 95%);
+    width: 1150px;
+    height: 650px;
+    margin: auto;
+    border: 2px solid white;
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 450px;
+}
+
+.article-header {
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 2px solid white;
+}
+
+.card-1 {
+    width: 30%;
+    height: 540px;
+    margin: 10px;
+    border: 2px solid white;
+    text-align: center;
+    margin: auto;
+}
+
+.card-1 select {
+    margin: auto;
+    width: 60%;
+    font-size: 20px;
+}
+
+.card-1 h2 {
+    color: #fff; 
+    text-align: center;
+}
+
+.card-1 label {
+    font-size: 15px; 
+    padding: 3px; 
+    background-color:rgb(202, 193, 193); 
+    margin-top: 10px; 
+    border-radius: 5px;
+}
+
+.card-1 textarea {
+    width: 60%; 
+    min-height: 100px;
+}
+
+.card-2 {
+    background-color: white;
+    width: 70%;
+    height: 540px;
+    margin: 10px;
+    border: 2px solid black;
+    text-align: start;
+    font-size: 18px;
+}
+
+.row {
+    display: flex;
+    background: rgb(88,97,89);
+    background: linear-gradient(45deg, rgba(88,97,89,1) 20%, rgba(69, 73, 70, 0.777) 49%, rgb(121, 125, 134) 95%);
+    margin-top: 10px;
+    border: 1px solid snow;
+    border-radius: 5px;
+}
+
+.add-btn {
+    background-color: green;
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.add-btn:hover {
+    background-color: rgb(155, 135, 24);
+    transition: 0.5s;
+}
+
+.cancel-btn {
+    background-color: rgb(155, 135, 24);
+    color: white;
+    border: 1px solid snow;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 110px;
+}
+
+.cancel-btn:hover {
+    background-color: red;
+    transition: 0.5s;
+}
+
+.custom-input {
+    border: 2px solid white;
+    text-align: center;
+    font-size: 15px;
+    width: 60%;
+    margin-bottom: 15px;
+}

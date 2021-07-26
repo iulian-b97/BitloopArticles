@@ -1,5 +1,6 @@
 <section *ngIf="!sectionBool && !sectionBool2 && !sectionBool3">
-    <div class="category-container">
+    <app-listing-categories></app-listing-categories>
+    <!-- <div class="category-container">
         <div class="category-header">
             <h1>Categories</h1>
         </div>
@@ -44,11 +45,11 @@
             </form>
             <button type="submit" class="cancel-btn" *ngIf="show" (click)="showOff()">Cancel</button>
         </div>
-    </div>
+    </div> 
 
     <div class="article-container">
-        <button (click)="sectionOn()" class="add-article-btn" routerLink='/article' routerLinkActive='active'>Add Article</button>
-        <!-- Search Bar -->
+         <button (click)="sectionOn()" class="add-article-btn" routerLink='/new-article' routerLinkActive='active'>Add Article</button>
+         Search Bar 
         <div class="boxContainer">
             <table class="elementsContainer">
                 <tr>
@@ -62,9 +63,10 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div> -->
 
-        <!-- Articles List -->
+        <app-listing-articles></app-listing-articles>
+        <!-- Articles List 
         <div class="wrap">
             <div class="card" *ngFor="let article of allArticlesPagination">
                 <a style="text-decoration: none; color: black;" (click)="section3On(article.id)">
@@ -82,9 +84,9 @@
                     <button (click)="deleteArticle(article.id)" class="delete-btn">Delete</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- Pagination -->
+        <!-- Pagination 
         <div class="pagination" *ngIf="showPagination">
             <a href="#" *ngIf="currentPage > 1" (click)="previousArticlePaginationList(currentPage-1, 5)">&laquo;</a>
             <a href="#" *ngIf="currentPage == 1">&laquo;</a>
@@ -96,12 +98,13 @@
                 <a href="#" *ngIf="currentPage !== totalPages" (click)="nextArticlePaginationList(currentPage+1, 5)">&raquo;</a>
                 <a href="#" *ngIf="currentPage == totalPages">&raquo;</a>
             </div>
-        </div>
+        </div> -->
        
-    </div>
+    
 </section>
 
-<!-- Edit Article -->
+<!-- <app-edit-article [article]="article" *ngIf="sectionBool2"></app-edit-article>
+ Edit Article 
 <section *ngIf="sectionBool2">
     <div class="article-box" >
         <div class="article-header">
@@ -130,9 +133,10 @@
         </form>
         </div>
     </div>
-</section>
+</section> -->
 
-<!-- View Article -->
+<!-- <app-view-articles [article]="article" *ngIf="sectionBool3"></app-view-articles>
+ View Article 
 <section *ngIf="sectionBool3">
     <div class="article-box" >
         <div class="article-header">
@@ -153,6 +157,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <router-outlet *ngIf="sectionBool"></router-outlet>

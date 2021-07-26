@@ -1,0 +1,46 @@
+<div class="category-container">
+    <div class="category-header">
+        <h1>Categories</h1>
+    </div>
+    <div class="all-category">
+        <div class="category-box" *ngFor="let category of allCategories">
+            <div class="edit-box" *ngIf="!editBool">
+                <span><b>Name:</b> {{category.name}}</span> <br>
+                <span><b>Date:</b> {{category.date | date: 'HH:mm:ss'}}  {{category.date | date: 'dd/MM/yyyy'}}</span> <br> <br>
+                <div *ngIf="!deleteBool">
+                    <button (click)="editOn(category.id)" class="edit-btn">Edit</button>
+                    <button (click)="deleteCategory(category.id)" class="delete-btn">Delete</button>
+                </div>
+                <div *ngIf="deleteBool && category.id == getCategoryId">
+                    <span>Sure?</span> <br>
+                    <button (click)="confirmDelete(category.id)" class="edit-btn">Yes</button>
+                    <button (click)="deleteOff()" class="delete-btn">No</button>
+                </div>
+            </div>
+            <div class="edit-box" *ngIf="editBool && category.id == getCategoryId">
+
+                <form [formGroup]="categoryService.categoryModel" autocomplete="off" (submit)="editCategory(category.id)">
+                    <h2>Name:</h2>
+                    <input class="custom-input" formControlName="Name" type="text" [ngModel]="category.name"> <br> <br>
+                    <button type="submit" class="add-btn">Modify</button>   
+                </form>
+                <button (click)="editOff()" class="cancel-btn">Cancel</button>
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="add-category" *ngIf="!show">
+        <button type="submit" class="add-btn" (click)="showOn()">Add Category</button>
+    </div>
+    <div class="add-category" *ngIf="show">
+        <form [formGroup]="categoryService.categoryModel" autocomplete="off" (submit)="addNewCategory()">
+            <h2 style="color: #fff; text-align: center;">Name:</h2>
+            <input class="custom-input" formControlName="Name" type="text" placeholder="Write here..."> <br>
+            <label style="font-size: 15px; padding: 3px; background-color:rgb(202, 193, 193); margin-top: 10px; border-radius: 5px;" class="text-danger" *ngIf="categoryService.categoryModel.get('Name').touched && categoryService.categoryModel.get('Name').errors?.required">Field is required!</label>
+            <br> <br>
+            <button type="submit" class="add-btn" [disabled]="!categoryService.categoryModel.valid">Save Category</button>
+        </form>
+        <button type="submit" class="cancel-btn" *ngIf="show" (click)="showOff()">Cancel</button>
+    </div>
+</div>

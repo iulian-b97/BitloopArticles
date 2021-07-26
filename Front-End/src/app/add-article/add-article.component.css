@@ -1,11 +1,13 @@
 .article-box {
     background: rgb(88,97,89);
     background: linear-gradient(45deg, rgba(88,97,89,1) 20%, rgba(69, 73, 70, 0.777) 49%, rgb(121, 125, 134) 95%);
-    width: 80%;
+    width: 1150px;
     height: 650px;
     margin: auto;
     border: 2px solid white;
     border-radius: 10px;
+    position: absolute;
+    margin-left: 450px;
 }
 
 .article-header {
@@ -33,6 +35,24 @@
     font-size: 20px;
 }
 
+.card-1 h2 {
+    color: #fff; 
+    text-align: center;
+}
+
+.card-1 label {
+    font-size: 15px; 
+    padding: 3px; 
+    background-color:rgb(202, 193, 193); 
+    margin-top: 10px; 
+    border-radius: 5px;
+}
+
+.card-1 textarea {
+    width: 60%; 
+    min-height: 100px;
+}
+
 .card-2 {
     background-color: white;
     width: 70%;
@@ -54,6 +74,7 @@
     border-radius: 5px;
     font-size: 15px;
     padding: 5px;
+    margin: 10px;
 }
 
 .add-btn:hover {

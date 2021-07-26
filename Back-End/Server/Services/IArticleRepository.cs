@@ -18,5 +18,6 @@ namespace Server.Services
         public ArticlePagingList GetArticlePagingList(int currentPage = 1, int pageSize = 5);
         public int GetTotalPages();
         public int CountArticlesPerCategory(string categoryId);
+        public string GetCategoryIdByName(string categoryName);
     }
 }
